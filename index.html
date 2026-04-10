@@ -5,150 +5,168 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>MV Roofing Co | Roofing Los Angeles & Riverside</title>
-<meta name="description" content="30+ years roofing experts serving Los Angeles & Riverside. Free inspections & AI roof estimates.">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-<style>.
-.logo {
-  display: block;
-  margin: 20px auto;
-  width: clamp(120px, 25vw, 180px);
-  height: auto;
-}
-
-.nav-logo {
-  height: 50px;
-}
+<style>
 body {
   background:#0b0b0c;
   color:#fff;
   font-family:'Inter',sans-serif;
+  margin:0;
 }
 
 h1,h2,h3 {
   font-family:'Montserrat',sans-serif;
 }
 
-nav {background:#111}
+/* ===== TOP NAV ===== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+}
 
+/* Center logo */
+.nav-center {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* Hamburger */
+.menu-btn {
+  position:absolute;
+  left:15px;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* Menu links */
+.nav-links {
+  display:none;
+  flex-direction:column;
+  gap:10px;
+  padding-top:10px;
+}
+
+.nav-links a {
+  color:white;
+  text-decoration:none;
+}
+
+/* logo */
 .logo {
-  max-width:160px;
-  margin:2rem auto;
-  display:block;
+  height:45px;
 }
 
+/* HERO */
 .hero {
+  height: 70vh;
+  background: url('images/hero.jpg') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:5rem 1rem;
+  padding:20px;
+  position:relative;
 }
 
+.hero::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+}
+
+.hero-content {
+  position:relative;
+  z-index:2;
+}
+
+/* GLASS BUTTONS */
+.glass-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  padding:12px 20px;
+  border-radius:12px;
+  color:white;
+  display:inline-block;
+  margin:10px;
+}
+
+/* sections */
 .section {
-  margin-top:2.5rem;
-  padding:2.5rem;
-  background:#151517;
-  border-radius:14px;
+  padding:40px 20px;
 }
-
-button,[role=button] {
-  background:linear-gradient(90deg,#ff7a00,#ffb347);
-  color:#000;
-  border:none;
-  font-weight:600;
-}
-
-.grid img {
-  border-radius:12px;
-}
-
-iframe {
-  width:100%;
-  height:500px;
-  border:none;
-  border-radius:12px;
-}
-
-.sticky-call {
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:#000;
-  padding:0.7rem;
-  text-align:center;
-}
-
-.sticky-call a {
-  margin:0 10px;
-}
-</style>.logo {
-  display: block;
-  margin: 2rem auto;
-  max-width: 160px;
-}
+</style>
 </head>
 
 <body>
 
-<nav class="container-fluid sticky-nav">
-<ul>
-<li>
-<img src="logo.png" class="nav-logo" alt="MV Roofing Logo">
-</li>
-</ul>
+<!-- NAV -->
+<nav>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<ul>
-<li><a href="#services">Services</a></li>
-<li><a href="#estimate">Estimate</a></li>
-<li><a href="#contact" role="button">Contact</a></li>
-</ul>
+  <div class="nav-center">
+    <img src="images/logo.png" class="logo" alt="MV Roofing Logo">
+  </div>
+
+  <div id="menu" class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#estimate">Estimate</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
-<img src="logo.png" alt="MV Roofing Logo" style="display:block; margin:20px auto; max-width:150px;">
-<main class="container">
-<img src="logo.png" class="logo" alt="MV Roofing Logo">
 
-<img src="logo.png" class="logo">
-
+<!-- HERO -->
 <section class="hero">
-<h1>Premium Roofing You Can Trust</h1>
-<h3>Calidad y Confianza en Cada Proyecto</h3>
+  <div class="hero-content">
+    <h1>Premium Roofing You Can Trust</h1>
+    <h3>Los Angeles & Riverside County</h3>
 
-<p>
-Serving Los Angeles & Riverside for 30+ years.<br>
-Sirviendo Los Ángeles y Riverside por más de 30 años.
-</p>
-
-<a href="#estimate" role="button">Get Instant Estimate</a>
+    <a class="glass-btn" href="#estimate">Get Estimate</a>
+    <a class="glass-btn" href="#contact">Call Now</a>
+  </div>
 </section>
 
+<!-- SERVICES -->
 <section id="services" class="section">
-<h3>Services / Servicios</h3>
-<p>
-Roof Installation • Repair • Replacement • Leak Detection • Inspections<br>
-Instalación • Reparación • Reemplazo • Inspecciones
-</p>
+  <h2>Services</h2>
+  <p>Roof Installation • Repair • Replacement • Inspections</p>
 </section>
 
-<section class="section">
-<h3>Why Choose MV Roofing</h3>
-<p>
-✔ 30+ Years Experience<br>
-✔ Family Owned<br>
-✔ Honest Pricing<br>
-✔ Licensed & Insured
-</p>
-</section>
-
+<!-- ESTIMATE -->
 <section id="estimate" class="section">
-<h3>Instant Roof Estimate</h3>
-<p>Use our AI tool to measure your roof instantly.</p>
-
-<iframe src="https://mvroofingco-info.lovable.app/"></iframe>
+  <h2>AI Roof Estimate</h2>
+  <iframe src="https://mvroofingco-info.lovable.app/" style="width:100%;height:500px;border:none;"></iframe>
 </section>
 
+<!-- BEFORE AFTER -->
 <section class="section">
-<h3>Before & After Work</h3>
-<div class="grid">
-<img src="images/before.jpg">
-<img src="images/after
+  <h2>Before & After</h2>
+  <img src="images/before.jpg" width="48%">
+  <img src="images/after.jpg" width="48%">
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2>Contact</h2>
+  <p>Victor: (951) 934-8958</p>
+  <p>Manuel: (323) 867-3353</p>
+</section>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("menu");
+  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+</script>
+
+</body>
+</html>
