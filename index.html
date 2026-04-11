@@ -13,19 +13,100 @@
 </head>
 
 <style>
-body {background:#0b0b0c;color:#fff}
+/* ===== LUXURY HEADER SYSTEM ===== */
 
-nav {background:#111}
-
-.logo {
-  max-width:180px;
-  display:block;
-  margin:1.5rem auto;
+body {
+  background: #0b0b0c;
+  color: white;
 }
 
-.hero {
-  text-align:center;
-  padding:3rem 1rem;
+/* GLASS NAVBAR */
+.lux-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(10,10,12,0.6);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,140,0,0.2);
+  padding: 10px 20px;
+}
+
+/* CENTER LOGO */
+.lux-logo {
+  max-width: 140px;
+  filter: drop-shadow(0 0 15px rgba(255,140,0,0.7));
+  animation: glow 2.5s infinite ease-in-out;
+}
+
+@keyframes glow {
+  0% { filter: drop-shadow(0 0 8px rgba(255,140,0,0.4)); }
+  50% { filter: drop-shadow(0 0 22px rgba(255,140,0,0.9)); }
+  100% { filter: drop-shadow(0 0 8px rgba(255,140,0,0.4)); }
+}
+
+/* HERO SECTION */
+.hero-lux {
+  text-align: center;
+  padding: 90px 20px 60px;
+  background:
+    radial-gradient(circle at top, rgba(255,140,0,0.15), transparent 60%),
+    linear-gradient(to bottom, #0b0b0c, #111);
+}
+
+.hero-lux h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero-lux p {
+  opacity: 0.8;
+  font-size: 18px;
+}
+
+/* CTA BUTTONS */
+.lux-btn {
+  background: linear-gradient(90deg, #ff7a00, #ffb347);
+  color: black;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  margin: 10px;
+  display: inline-block;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.lux-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,140,0,0.5);
+}
+</style>
+
+<!-- ===== NAV ===== -->
+<nav class="lux-nav">
+  <div style="text-align:center;">
+    <img src="./logo.png" class="lux-logo" alt="MV Roofing Logo">
+  </div>
+
+  <div style="text-align:center; margin-top:10px;">
+    <a href="#estimate" class="lux-btn">Instant Estimate</a>
+    <a href="#work" class="lux-btn">Our Work</a>
+    <a href="#contact" class="lux-btn">Call Now</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero-lux">
+  <h1>Premium Roofing Built to Last</h1>
+  <p>Los Angeles • Riverside • Orange County</p>
+  <p>Familia • Calidad • Confianza • 30+ Years Experience</p>
+
+  <div style="margin-top:20px;">
+    <a href="tel:19519348958" class="lux-btn">Call Victor</a>
+    <a href="#estimate" class="lux-btn">Free AI Estimate</a>
+  </div>
+</section>
 }
 
 .section {
