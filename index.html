@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>MV Roofing Co | Los Angeles & Riverside Roofing Experts</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
+<link rel="icon" type="image/png" href="./logo.png">
+<link rel="shortcut icon" href="./logo.png">
+
+<style>
+body{
+  margin:0;
+  background:#0b0b0c;
+  color:#fff;
+  font-family:system-ui;
+}
+
+/* ===== LUX HEADER ===== */
+.lux-nav{
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:rgba(10,10,12,0.6);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,140,0,0.25);
+  text-align:center;
+  padding:12px;
+}
+
+.logo{
+  width:140px;
+  filter:drop-shadow(0 0 14px rgba(255,140,0,0.6));
+  animation:glow 2.5s infinite ease-in-out;
+}
+
+@keyframes glow{
+  0%{filter:drop-shadow(0 0 6px rgba(255,140,0,0.4))}
+  50%{filter:drop-shadow(0 0 20px rgba(255,140,0,0.9))}
+  100%{filter:drop-shadow(0 0 6px rgba(255,140,0,0.4))}
+}
+
+/* ===== HERO ===== */
+.hero{
+  text-align:center;
+  padding:90px 20px;
+  background:
+    radial-gradient(circle at top, rgba(255,140,0,0.15), transparent 60%),
+    linear-gradient(to bottom,#0b0b0c,#111);
+}
+
+.hero h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  opacity:0.8;
+}
+
+/* BUTTONS */
+.btn{
+  display:inline-block;
+  margin:10px;
+  padding:12px 18px;
+  border-radius:10px;
+  background:linear-gradient(90deg,#ff7a00,#ffb347);
+  color:black;
+  font-weight:700;
+  text-decoration:none;
+}
+
+/* SECTIONS */
+.section{
+  background:#151517;
+  margin:20px;
+  padding:25px;
+  border-radius:14px;
+}
+
+/* AI TOOL */
+iframe{
+  width:100%;
+  height:520px;
+  border:none;
+  border-radius:12px;
+}
+
+/* BEFORE AFTER */
+.ba-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.ba-grid img{
+  width:100%;
+  border-radius:10px;
+}
+
+/* STICKY CALL */
+.sticky{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#000;
+  padding:10px;
+  text-align:center;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="lux-nav">
+  <img src="./logo.png" class="logo" alt="MV Roofing Logo">
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Luxury Roofing You Can Trust</h1>
+  <p>Los Angeles • Riverside • Orange County</p>
+  <p>30+ Years Family-Owned Roofing Experts</p>
+
+  <a class="btn" href="tel:19519348958">Call Victor</a>
+  <a class="btn" href="#estimate">Free Estimate</a>
+</section>
+
+<main>
+
+<!-- AI TOOL -->
+<section class="section" id="estimate">
+  <h2>Instant Roof Estimate</h2>
+  <p>Use our AI satellite roof estimator for a fast quote range.</p>
+  <iframe src="https://mvroofingco-info.lovable.app/"></iframe>
+</section>
+
+<!-- SERVICES -->
+<section class="section">
+  <h2>Our Services</h2>
+  <p>Roof Replacement • Repairs • Leak Detection • Full Inspections</p>
+</section>
+
+<!-- BEFORE AFTER -->
+<section class="section">
+  <h2>Before & After Work</h2>
+  <div class="ba-grid">
+    <img src="images/before.jpg" alt="before roof">
+    <img src="images/after.jpg" alt="after roof">
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section">
+  <h2>Why Homeowners Choose Us</h2>
+  <p>
+    ✔ Family Owned Since 1995<br>
+    ✔ Licensed & Insured<br>
+    ✔ Fast Emergency Repairs<br>
+    ✔ Honest Pricing
+  </p>
+</section>
+
+<!-- CONTACT -->
+<section class="section">
+  <h2>Get Your Free Quote</h2>
+
+  <form action="https://formspree.io/f/mayvlqzb" method="POST">
+    <input name="name" placeholder="Name" required>
+    <input name="email" placeholder="Email" required>
+    <button class="btn" type="submit">Request Quote</button>
+  </form>
+
+  <p>
+    Victor: <a href="tel:19519348958">(951) 934-8958</a><br>
+    Manuel: <a href="tel:13238673353">(323) 867-3353</a>
+  </p>
+</section>
+
+</main>
+
+<!-- STICKY CALL BAR -->
+<div class="sticky">
+  <a class="btn" href="tel:19519348958">Call Now</a>
+  <a class="btn" href="tel:13238673353">Call Manuel</a>
+</div>
+
+</body>
+</html>
