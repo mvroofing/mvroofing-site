@@ -100,6 +100,56 @@ iframe {
 
 <!-- BEFORE / AFTER -->
 <section id="work" class="section">
+<h3>Before & After</h3>
+
+<div class="slider-container">
+  <img src="images/before.jpg" class="before">
+  <img src="images/after.jpg" class="after" id="afterImage">
+
+  <input type="range" min="0" max="100" value="50" id="slider">
+</div>
+
+<p style="margin-top:1rem;">
+Drag the slider to see the transformation.
+</p>
+</section>
+
+<style>
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.slider-container img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+.slider-container .after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+}
+
+#slider {
+  width: 100%;
+  margin-top: 1rem;
+}
+</style>
+
+<script>
+const slider = document.getElementById("slider");
+const afterImage = document.getElementById("afterImage");
+
+slider.addEventListener("input", function () {
+  afterImage.style.width = this.value + "%";
+});
+</script>
 <h3>Our Work (Before & After)</h3>
 
 <div class="grid">
