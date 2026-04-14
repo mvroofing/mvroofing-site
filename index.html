@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MV Roofing AI Estimator</title>
+
+<style>
+body{background:#050505;color:#fff;font-family:sans-serif;text-align:center;padding:20px;}
+input,select{width:90%;padding:12px;margin:10px;background:#111;border:1px solid #333;color:#fff;}
+button{padding:12px 20px;margin-top:10px;}
+#result{margin-top:20px;font-size:24px;}
+.popup{
+display:none;position:fixed;bottom:20px;left:20px;
+background:#111;padding:20px;border:1px solid #333;
+}
+</style>
+</head>
+
+<body>
+
+<h1>AI Roof Estimate</h1>
+
+<input type="file" id="photo" accept="image/*">
+<input type="text" id="name" placeholder="Name">
+<input type="tel" id="phone" placeholder="Phone">
+
+<button onclick="estimateAI()">Get AI Estimate</button>
+
+<div id="result"></div>
+
+<!-- DISCOUNT -->
+<div id="popup" class="popup">
+<h3>$500 OFF</h3>
+<p>Use code MV500</p>
+<button onclick="closePopup()">Close</button>
+</div>
+
+<script>
+window.onload=()=>{
+if(!localStorage.getItem("seen")){
+setTimeout(()=>{
+document.getElementById("popup").style.display="block";
+localStorage.setItem("seen",true);
+},3000);
+}
+};
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
+}
+
+async function estimateAI(){
+const file=document.getElementById("photo").files[0];
+const name=document.getElementById("name").value;
+const phone=document.getElementById("phone").value;
+
+if(!file||!name||!phone){
+alert("Upload image + enter info");
+return;
+}
+
+const formData=new FormData();
+formData.append("file",file);
+formData.append("name",name);
+formData.append("phone",phone);
+
+document.getElementById("result").innerText="Analyzing...";
+
+const res=await fetch("http://localhost:8000/estimate-ai",{
+method:"POST",
+body:formData
+});
+
+const data=await res.json();
+
+document.getElementById("result").innerText=
+"$"+data.low.toLocaleString()+" - $"+data.high.toLocaleString();
+}
+</script>
+
+</body>
+</html>
+import os
+import base64
+import json
+from fastapi import FastAPI, File, UploadFile, Form
+from openai import OpenAI
+
+app = FastAPI()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+BASE = 7
+
+def encode(img):
+    return base64.b64encode(img).decode()
+
+@app.post("/estimate-ai")
+async def estimate_ai(
+    file: UploadFile = File(...),
+    name: str = Form(...),
+    phone: str = Form(...)
+):
+    img = await file.read()
+    b64 = encode(img)
+
+    prompt = """
+    Estimate roof:
+    Return JSON:
+    {
+    "sqft": number,
+    "type": number,
+    "pitch": number,
+    "complexity": number
+    }
+    """
+
+    res = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{
+            "role":"user",
+            "content":[
+                {"type":"text","text":prompt},
+                {"type":"image_url","image_url":{"url":f"data:image/jpeg;base64,{b64}"}}
+            ]
+        }]
+    )
+
+    data = json.loads(res.choices[0].message.content)
+
+    total = data["sqft"] * BASE * data["type"] * data["pitch"] * data["complexity"]
+    low = round(total * 0.9)
+    high = round(total * 1.1)
+
+    # SAVE LEAD
+    with open("leads.txt","a") as f:
+        f.write(f"{name},{phone},{low}-{high}\n")
+
+    return {"low":low,"high":high}
+    import uvicorn
+
+if __name__ == "__main__":
+    uvicorn.run("ai_estimator:app", host="0.0.0.0", port=8000, reload=True)
+    pip install fastapi uvicorn openai python-multipart
+    export OPENAI_API_KEY=your_key_here
+    python run.py
