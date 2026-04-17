@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #050505;
+  --color-foreground: #ffffff;
+  --color-muted: #0f0f0f;
+  --color-muted-foreground: #a3a3a3;
+  --color-border: #222222;
+  --color-input: #111111;
+  --color-ring: #8a8a8a;
+  --color-primary: #ffffff;
+  --color-primary-foreground: #050505;
+  --color-secondary: #111111;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #cfcfcf;
+  --color-card: #0f0f0f;
+  --color-card-foreground: #ffffff;
+
+  --font-sans: "Poppins", system-ui, sans-serif;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Silver gradient text utility */
+  .text-silver {
+    background: linear-gradient(135deg, #fff, #cfcfcf, #8a8a8a, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
