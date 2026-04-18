@@ -44,6 +44,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} bg-background`}>
       <body>
+<body>
+  {/* GLASS PARTICLES */}
+  <div className="particle p1" />
+  <div className="particle p2" />
+  <div className="particle p3" />
+  <div className="particle p4" />
+  <div className="particle p5" />
+  <div className="particle p6" />
+
+  {children}
+</body>
   <div className="bg-animated" />
   <div className="bg-overlay" />
 
