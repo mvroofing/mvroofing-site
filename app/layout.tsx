@@ -35,7 +35,26 @@ export const viewport: Viewport = {
   maximumScale: 1,
   themeColor: "#050505",
 };
+"use client";
 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        {/* particles */}
+        <div className="particle p1" />
+        <div className="particle p2" />
+        <div className="particle p3" />
+
+        {children}
+      </body>
+    </html>
+  );
+}
 export default function RootLayout({
   children,
 }: {
