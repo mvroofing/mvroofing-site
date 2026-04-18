@@ -43,7 +43,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${poppins.variable} bg-background`}>
-      <body>{children}</body>
+      <body>
+  <div className="bg-animated" />
+  <div className="bg-overlay" />
+
+  {children}
+</body>
     </html>
   );
 }
